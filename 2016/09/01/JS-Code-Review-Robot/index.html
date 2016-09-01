@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Description-->
+    
+        <meta name="description" content="Some details in code review are repetitive at times, such as: “always use strict equal in JS”, “Function unused”. So, what about to automating these t">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Matheus Poleza">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="JS Code Review Robot"/>
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Poleza Blog"/>
+
+    <!--Page Cover-->
+    
+        <meta property="og:image" content="undefined"/>
+    
+
+    <!-- Title -->
+    
+    <title>JS Code Review Robot - Poleza Blog</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/sass/main.css">
+
+    <!--[if lt IE 8]>
+        <script src="/js/ie/html5shiv.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/sass/ie8.css">
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="/sass/ie9.css">
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Menu -->
+        <!-- Header -->
+<header id="header">
+    <div class="inner">
+
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="/images/logo.jpg" alt="" /></span><span class="title">Poleza Blog</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<!-- Menu -->
+<nav id="menu">
+    <h2>Menu</h2>
+    <ul>
+        
+            <li>
+                <a href="/">Home</a>
+            </li>
+        
+            <li>
+                <a href="/archives">Archives</a>
+            </li>
+        
+            <li>
+                <a href="/about.html">About</a>
+            </li>
+        
+    </ul>
+</nav>
+
+
+        <div id="main">
+            <div class="inner">
+
+                <!-- Main Content -->
+                
+
+    <h1>JS Code Review Robot</h1>
+
+
+
+<!-- Gallery -->
+
+
+<!-- Content -->
+<p>Some details in code review are repetitive at times, such as: “always use strict equal in JS”, “Function unused”. So, what about to automating these things?</p>
+<h2 id="Step-1-Signing-in-Hound-CI"><a href="#Step-1-Signing-in-Hound-CI" class="headerlink" title="Step 1: Signing in Hound CI"></a>Step 1: Signing in Hound CI</h2><p>Hound CI is a hosted service that reviews GitHub pull requests for Ruby, JavaScript, CoffeeScript, and SCSS style guide violations.<br>Go to <a href="https://houndci.com/" target="_blank" rel="external">https://houndci.com/</a> and Sign In with your Github account:</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*rTPvWEYu0K0bvzfTheujqg.png" alt="Sign Hound CI" title="Sign Hound CI"></p>
+<p><em>This gonna open your repository list. I created a hound-ci-tutorial, you can choose whatever you want. So, <strong>choose a repository and activate it</strong>:</em></p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*q4D2kMgWS062Y_IigcLeYg.png" alt="Active Hound CI" title="Active Hound CI"></p>
+<h2 id="Step-2-Open-Pull-Request"><a href="#Step-2-Open-Pull-Request" class="headerlink" title="Step 2: Open Pull-Request"></a>Step 2: Open Pull-Request</h2><p>To test, I will create a pull-request in the repository have chosen with some JS file and view the hound CI standards validations.</p>
+<p><img src="https://cdn-images-1.medium.com/max/1200/1*JwG5bpo45g-iLW62UTr_8A.png" alt="Github PR" title="Github PR"></p>
+<h2 id="Step-3-Custom-Configuration"><a href="#Step-3-Custom-Configuration" class="headerlink" title="Step 3: Custom Configuration"></a>Step 3: Custom Configuration</h2><p>This is the default JS setting Hound CI. You can see the default version here. Let’s create a custom validator. In your repository create a file called .javascript-style.json with this code:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"asi"</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">"bitwise"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"browser"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"camelcase"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"curly"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"forin"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"immed"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"latedef"</span>: <span class="string">"nofunc"</span>,</div><div class="line">  <span class="attr">"maxlen"</span>: <span class="number">80</span>,</div><div class="line">  <span class="attr">"newcap"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"noarg"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"noempty"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"nonew"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"predef"</span>: [</div><div class="line">    <span class="string">"$"</span>,</div><div class="line">    <span class="string">"jQuery"</span>,</div><div class="line">    <span class="string">"jasmine"</span>,</div><div class="line">    <span class="string">"beforeEach"</span>,</div><div class="line">    <span class="string">"describe"</span>,</div><div class="line">    <span class="string">"expect"</span>,</div><div class="line">    <span class="string">"it"</span>,</div><div class="line">    <span class="string">"angular"</span>,</div><div class="line">    <span class="string">"inject"</span>,</div><div class="line">    <span class="string">"module"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"quotmark"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"trailing"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"undef"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"unused"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"eqnull"</span>: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>We copy the default version and added this eqnull line. After that, create .hound.yml file in your repository with this code:</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">javascript:</span></div><div class="line"><span class="attr">  config_file:</span> .javascript-style.json</div></pre></td></tr></table></figure>
+<p>You can create a test file, this will raise eqnull error:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">eqnull</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="number">1</span> == <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>So you can see the result:</p>
+<p><img src="https://cdn-images-1.medium.com/max/800/1*0-xguTuTv6oyqKHyNd1hPA.png" alt="Github PR" title="Github PR"></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>You can take a look and see the other features available not only for javascript, but for css, ruby, python. It’s a fantastic tool.</p>
+
+
+<!-- Tags -->
+
+
+
+<div class="tags">
+    <a href="/tags/Javascript/" class="button small">Javascript</a> <a href="/tags/Code-Review/" class="button small">Code Review</a>
+</div>
+
+
+
+<!-- Comments -->
+<div>
+    
+    <hr />
+    <h3>Comments:</h3>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>About</h2>
+            <div>
+                My name is Matheus Poleza. I have 21 years old. I'm Web Developer for 4 years. I'm current working at ContaAzul as FrontEnd Engineer. I love open-source, Javascript, Python, web development and marketing stuff :)
+            </div>
+        </section>
+        <section>
+            <h2>Follow</h2>
+            <ul class="icons">
+                
+                    <li><a href="https://twitter.com/matheuspoleza" class="icon style2 fa-twitter" target="_blank" ><span class="label">Twitter</span></a></li>
+                
+                
+                    <li><a href="https://www.facebook.com/matheus.poleza" class="icon style2 fa-facebook" target="_blank" ><span class="label">Facebook</span></a></li>
+                
+                
+                    <li><a href="https://www.instagram.com/matheuspoleza" class="icon style2 fa-instagram" target="_blank" ><span class="label">Instagram</span></a></li>
+                
+                
+                    <li><a href="https://dribbble.com/matheuspoleza" class="icon style2 fa-dribbble" target="_blank" ><span class="label">Dribbble</span></a></li>
+                
+                
+                    <li><a href="https://github.com/matheuspoleza" class="icon style2 fa-github" target="_blank" ><span class="label">GitHub</span></a></li>
+                
+                
+                    <li><a href="https://plus.google.com/matheuspoleza" class="icon style2 fa-google-plus" target="_blank" ><span class="label">Google+</span></a></li>
+                
+                
+                    <li><a href="https://www.behance.net/matheuspoleza" class="icon style2 fa-behance" target="_blank" ><span class="label">Behance</span></a></li>
+                
+                
+                    <li><a href="https://500px.com/" class="icon style2 fa-500px" target="_blank" ><span class="label">500px</span></a></li>
+                
+                
+                    <li><a href="matheus.poleza@gmail.com" class="icon style2 fa-envelope-o" target="_blank" ><span class="label">Email</span></a></li>
+                
+                
+                    <li><a href="matheus.poleza@gmail.com" class="icon style2 fa-rss" target="_blank" ><span class="label">RSS</span></a></li>
+                
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved</li>
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Hexo: <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></li>
+        </ul>
+    </div>
+</footer>
+    </div>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- skel -->
+<script src="/js/skel.min.js"></script>
+
+<!-- Custom Code -->
+<script src="/js/util.js"></script>
+
+<!--[if lte IE 8]>
+<script src="/js/ie/respond.min.js"></script>
+<![endif]-->
+
+<!-- Custom Code -->
+<script src="/js/main.js"></script>
+
+<!-- Gallery -->
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Disqus Comments -->
+
+<script type="text/javascript">
+    var disqus_shortname = 'matheuspoleza';
+
+    (function(){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+</body>
+
+</html>
